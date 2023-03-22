@@ -6,7 +6,7 @@ const addProduct = async (req, res) => {
         const savedProduct = await newProduct.save();
         res.status(201).json(savedProduct);
     } catch (error) {
-        console.log(`Error: ${error.message}`);
+        console.log({ msg: error.message });
     }
 }
 
@@ -37,8 +37,14 @@ const updateProduct = async (req, res) => {
     }
 }
 
-const deleteProduct = (req, res) => {
-
+const deleteProduct = async (req, res) => {
+    const { id } = req.params;
+    try {
+        const deletedProduct = await Product.findByIdAndDelete(id);
+        res.json(deletedProduct);
+    } catch (error) {
+        res.status(404).json({ msg: error.message });
+    }
 }
 
 export {
