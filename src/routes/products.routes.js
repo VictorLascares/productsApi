@@ -2,7 +2,7 @@ import { Router } from "express";
 import { 
     addProduct,
     getProducts,
-    getOneProduct,
+    getProductById,
     updateProduct,
     deleteProduct
 } from "../controllers/product.controller";
@@ -15,7 +15,7 @@ router
 
 router
     .route('/:id')
-    .get(getOneProduct)
+    .get(getProductById)
     .put(updateProduct)
     .delete(deleteProduct)
 
