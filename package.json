@@ -1,11 +1,11 @@
 {
   "name": "products-api",
   "version": "1.0.0",
-  "type": "module",
   "main": "index.js",
   "scripts": {
-    "start": "node index.js",
-    "dev": "nodemon index.js"
+    "start": "node build/index.js",
+    "dev": "nodemon src/index.js --exec babel-node",
+    "build": "babel src --out-dir build"
   },
   "repository": "https://github.com/VictorLascares/productsApi.git",
   "author": "Victor Lascares <vmlascares@gmail.com>",
@@ -20,6 +20,10 @@
     "mongoose": "^7.0.2"
   },
   "devDependencies": {
+    "@babel/cli": "^7.21.0",
+    "@babel/core": "^7.21.3",
+    "@babel/node": "^7.20.7",
+    "@babel/preset-env": "^7.20.2",
     "nodemon": "^2.0.21"
   }
 }
