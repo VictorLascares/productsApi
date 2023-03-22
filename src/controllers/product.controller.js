@@ -1,7 +1,13 @@
+import Product from "../models/Product";
 
-
-const addProduct = (req, res) => {
-
+const addProduct = async (req, res) => {
+    const newProduct = new Product(req.body);
+    try {
+        const savedProduct = await newProduct.save();
+        res.json(savedProduct);
+    } catch (error) {
+        console.log(`Error: ${error.message}`);
+    }
 }
 
 const getProducts = (req, res) => {
