@@ -21,12 +21,20 @@ const getProductById = async (req, res) => {
         const product = await Product.findById(id);
         res.json(product);
     } catch (error) {
-       res.status(404).json({ msg: error.message });
+        res.status(404).json({ msg: error.message });
     }
 }
 
-const updateProduct = (req, res) => {
-
+const updateProduct = async (req, res) => {
+    const { id } = req.params;
+    try {
+        const updatedProduct = await Product.findByIdAndUpdate(id, req.body, {
+            new: true
+        });
+        res.json(updatedProduct);
+    } catch (error) {
+        res.status(404).json({ msg: error.message });
+    }
 }
 
 const deleteProduct = (req, res) => {
